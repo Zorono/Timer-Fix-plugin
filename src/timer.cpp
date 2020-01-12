@@ -154,7 +154,8 @@ bool Timer::Process()
 			if (amx_Exec(m_pAMX, &retval, index) != AMX_ERR_NONE)
 			{
 				logprintf("error while processing timer: cannot execute public '%s'", m_sName.c_str());
-				return false;
+				//return false;
+                                return true; // just debugging...
 			}
 
 			if (param_stack.tmp_on_stack != -1)
