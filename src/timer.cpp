@@ -151,9 +151,10 @@ bool Timer::Process()
 			}
 
 			cell retval;
-			if (amx_Exec(m_pAMX, &retval, index) != AMX_ERR_NONE)
+			int amxerr = amx_Exec(m_pAMX, &retval, index);
+			if (amxerr != AMX_ERR_NONE)
 			{
-				logprintf("error while processing timer: cannot execute public '%s'", m_sName.c_str());
+				logprintf("error while processing timer: cannot execute public '%s'(AMX ERRPR: %d)", m_sName.c_str(), amxerr);
 				//return false;
                                 return true; // just debugging...
 			}
